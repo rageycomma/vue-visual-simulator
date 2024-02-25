@@ -13,90 +13,6 @@
         </div>
       </div>
       <div class="row p-5">
-        <div class="col-md-12 text-center">
-          <h1 class="header-section">{{ $t("technologies") }}</h1>
-          <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6"><hr /></div>
-            <div class="col-md-3"></div>
-          </div>
-          <div class="row py-5">
-            <div class="col-md-4">
-              <h2>
-                <i class="fa-brands fa-html5 html5-icon"></i>
-              </h2>
-              <h2>HTML5</h2>
-              <p>
-                Build with lastest version of
-                <a target="_blank" href="https://html5.org/">HTML</a>
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h2>
-                <i class="fa-brands fa-js js-icon"></i>
-              </h2>
-              <h2>Javascript</h2>
-              <p>
-                Build with latest version of
-                <a target="_blank" href="https://www.javascript.com/"
-                  >JavaScript</a
-                >
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h2>
-                <i class="fa-brands fa-css3 css3-icon"></i>
-              </h2>
-              <h2>CSS3</h2>
-              <p>
-                Build with latest version of
-                <a
-                  target="_blank"
-                  href="https://www.w3.org/Style/CSS/Overview.en.html"
-                  >CSS</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="row py-5">
-            <div class="col-md-4">
-              <h2>
-                <i class="fa-brands fa-font-awesome fa-icon"></i>
-              </h2>
-              <h2>Font Awesome</h2>
-              <p>
-                Build with latest version of
-                <a target="_blank" href="https://fontawesome.com/"
-                  >FontAwesome</a
-                >
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h2>
-                <i class="fa-brands fa-vuejs vuejs-icon"></i>
-              </h2>
-              <h2>VueJS3</h2>
-              <p>
-                Build with
-                <a target="_blank" href="https://vuejs.org/">Vue</a>
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h2>
-                <i class="fa-brands fa-bootstrap bootstrap-icon"></i>
-              </h2>
-              <h2>Bootstrap 5</h2>
-              <p>
-                Build with
-                <a target="_blank" href="https://getbootstrap.com/"
-                  >Bootstrap</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row p-5">
         <div class="col-md-12">
           <h1 class="text-center header-section">{{ $t("warning") }}</h1>
           <div class="row">
@@ -118,10 +34,10 @@
           <div class="card col-md-12">
             <div class="card-body">
               <a
-                href="https://github.com/alisonrag/vue-visual-simulator/graphs/contributors"
+                href="https://github.com/rageycomma/vue-visual-simulator/graphs/contributors"
               >
                 <img
-                v-lazy="{ src: 'https://contrib.rocks/image?repo=alisonrag/vue-visual-simulator', delay: 250 }"
+                v-lazy="{ src: 'https://contrib.rocks/image?repo=rageycomma/vue-visual-simulator', delay: 250 }"
                 />
               </a>
             </div>
@@ -140,7 +56,7 @@
             <div class="col-md-12">
               <h2>
                 <a
-                  href="https://github.com/alisonrag/vue-visual-simulator"
+                  href="https://github.com/rageycomma/vue-visual-simulator"
                   target="_blank"
                   ><i class="fa-brands fa-github"></i
                 ></a>
@@ -156,7 +72,7 @@
 <script>
 export default {
   mounted() {
-    document.title = "Ragnarok Online Visual Simulator - About";
+    document.title = `${process.env.VUE_APP_LOGO_URL} About`;
   },
 };
 </script>
