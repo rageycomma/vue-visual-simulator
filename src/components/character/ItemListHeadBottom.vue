@@ -24,19 +24,24 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import itemsJson from '../../db/items.json';
+import { mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "ItemListHeadBottom",
   props: ["item_filter"],
+  computed: {
+    ...mapGetters(['getJsonItems'])
+  },
   data() {
     return {
-      items: itemsJson.filter(function (item) {
-        return item.bot == true;
-      }),
+      items: [],
       active: false,
     };
+  },
+  mounted: function () {
+    this.items = this.getJsonItems?.filter(function (item) {
+        return item.bot == true;
+    })
   },
   methods: {
     ...mapMutations([

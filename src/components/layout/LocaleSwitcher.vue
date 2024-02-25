@@ -13,17 +13,20 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   name: "LocaleSwitcher",
   mounted() {
     this.loadLanguageFromLocalStorage();
   },
   methods: {
+    ...mapMutations(['SAVE_LANGUAGE']),
     switchLocale(event) {
       let locale = event.target.value;
       if (this.$i18n.locale !== locale) {
         this.$i18n.locale = locale;
         localStorage.setItem("current_language", locale);
+        this.SAVE_LANGUAGE(locale);
       }
     },
     loadLanguageFromLocalStorage: function () {

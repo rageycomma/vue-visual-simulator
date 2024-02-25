@@ -1,8 +1,13 @@
 import { createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
-
+import itemsEn from "@/db/itemsEn.json";
+import itemsPt from "@/db/itemsPt.json";
 export default createStore({
   state: {
+    ui: {
+      language: 'en',
+      jsonFile: itemsEn
+    },
     character: {
       gender: 1,
       job: ["0"],
@@ -29,8 +34,26 @@ export default createStore({
     cash_mount_checked: 0,
     regular_mount_checked: 0,
   },
-  getters: {},
+  getters: {
+    getJsonItems (state) {
+      return state.ui.jsonFile;
+    }
+  },
   mutations: {
+    SAVE_LANGUAGE(state, language) {
+      state.ui.language = language;
+
+      console.log(itemsPt);
+
+      if (language === 'pt') {
+        state.ui.jsonFile = itemsPt;
+      } else {
+        state.ui.jsonFile = itemsEn;
+      }
+    },
+    SAVE_ITEMDB(state, jsonFile) {
+      state.ui.jsonFile = jsonFile;
+    },
     SAVE_GENDER(state, gender) {
       state.character.gender = gender;
     },
@@ -128,7 +151,7 @@ export default createStore({
         state.regular_mount_checked = 0;
       }
     },
-    RESET_CHARACTER(state, payload) {
+    RESET_CHARACTER(state) {
       state.character.gender = 1;
       state.character.job = ["0"];
       state.character.head = 1;

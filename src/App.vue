@@ -1,9 +1,11 @@
 <template>
-  <div class="container-content">
-    <Navbar :logoImage="logo_url" :logoImageAlt="logo_alt" :projectName="project_name" />
+  <main class="container-content">
+    <div class="container">
+      <Navbar :logoImage="logo_url" :logoImageAlt="logo_alt" :projectName="project_name" />
+    </div>
     <router-view />
     <Footer :projectGit="project_git" :authorGit="author_git" :projectName="project_name" />
-  </div>
+  </main>
 </template>
 
 <script>

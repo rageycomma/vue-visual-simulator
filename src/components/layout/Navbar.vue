@@ -36,16 +36,11 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 import LocaleSwitcher from "@/components/layout/LocaleSwitcher.vue";
-
-export default {
-  name: "Navbar",
-  props: ["logoImage", "logoImageAlt", "projectName"],
-  components: {
-    LocaleSwitcher,
-  },
-};
+const name = "Navbar";
+const props = defineProps(["logoImage", "logoImageAlt", "projectName"]);
+const emits = defineEmits(['languageChanged']);
 </script>
 
 <style scoped>

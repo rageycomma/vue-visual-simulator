@@ -268,7 +268,10 @@
 </template>
 
 <script>
+import environment from "@/env";
 import { mapMutations } from "vuex";
+import itemsEnglish from "@/db/itemsEn";
+import itemsPortuguese from "@/db/itemsPt";
 import GenderList from "@/components/character/GenderList.vue";
 import HairColorList from "@/components/character/HairColorList.vue";
 import HeadList from "@/components/character/HeadList.vue";
@@ -285,6 +288,7 @@ import ClearCharacterButton from "@/components/character/ClearCharacterButton.vu
 import OutfitCheckbox from "@/components/character/OutfitCheckbox.vue";
 import RegularMountCheckbox from "@/components/character/RegularMountCheckbox.vue";
 import CashMountCheckbox from "@/components/character/CashMountCheckbox.vue";
+import { Tooltip } from "bootstrap";
 
 export default {
   data() {
@@ -319,8 +323,9 @@ export default {
     CashMountCheckbox,
   },
   mounted() {
-    document.title = "Ragnarok Online Visual Simulator";
+    document.title = environment.app_name;
     this.loadLocalStorage();
+    this.activeTooltip();
     this.updatePanelUrls();
 
     document.addEventListener("keydown", (event) => {
@@ -424,6 +429,13 @@ export default {
   },
   methods: {
     ...mapMutations(["SAVE_CHARACTER", "RESET_CHARACTER"]),
+    activeTooltip: function () {
+      return [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      ).map(function (tooltipTriggerEl) {
+        return new Tooltip(tooltipTriggerEl);
+      });
+    },
     loadLocalStorage: function () {
       let character = localStorage.getItem("character");
 
@@ -451,25 +463,25 @@ export default {
   watch: {
     "$store.state.headgear_top_item.id": {
       deep: true,
-      handler(newValue) {
+      handler(newValue, oldValue) {
         this.item_top_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },
     "$store.state.headgear_mid_item.id": {
       deep: true,
-      handler(newValue) {
+      handler(newValue, oldValue) {
         this.item_mid_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },
     "$store.state.headgear_bottom_item.id": {
       deep: true,
-      handler(newValue) {
+      handler(newValue, oldValue) {
         this.item_bot_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },
     "$store.state.garment_item.id": {
       deep: true,
-      handler(newValue) {
+      handler(newValue, oldValue) {
         this.item_garmet_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },
