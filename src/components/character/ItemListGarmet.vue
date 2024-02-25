@@ -30,7 +30,7 @@ export default {
   name: "ItemListGarmet",
   props: ["item_filter"],
   computed: {
-    ...mapGetters(['getJsonItems'])
+    ...mapGetters(['getJsonItems']),
   },
   data() {
     return {
@@ -40,8 +40,16 @@ export default {
   },
   mounted: function () {
     this.items = this.getJsonItems?.filter(function (item) {
-        return item.garment == true;
+        return item.bot == true;
     })
+  },
+  watch: {
+    "$store.ui.jsonFile": {
+      deep: true,
+      handler(newValue) {
+        this.jsonItems = newValue;
+      }
+    }
   },
   methods: {
     ...mapMutations([

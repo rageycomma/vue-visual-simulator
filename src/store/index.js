@@ -42,14 +42,16 @@ export default createStore({
   mutations: {
     SAVE_LANGUAGE(state, language) {
       state.ui.language = language;
-
-      console.log(itemsPt);
-
       if (language === 'pt') {
         state.ui.jsonFile = itemsPt;
       } else {
         state.ui.jsonFile = itemsEn;
       }
+
+      state.headgear_bottom_item = state.ui.jsonFile.find(item => item.id === state.headgear_bottom_item?.id) || {};
+      state.headgear_mid_item = state.ui.jsonFile.find(item => item.id === state.headgear_mid_item?.id) || {};
+      state.headgear_top_item = state.ui.jsonFile.find(item => item.id === state.headgeheadgear_top_itemar_mid_item?.id) || {};
+      state.garment_item = state.ui.jsonFile.find(item => item.id === state.garment_item?.id) || {};
     },
     SAVE_ITEMDB(state, jsonFile) {
       state.ui.jsonFile = jsonFile;
@@ -79,7 +81,6 @@ export default createStore({
       state.character.headgear[2] = viewID;
     },
     SAVE_HEADGEAR_MID_ITEM(state, item) {
-
       state.headgear_mid_item = item;
     },
     SAVE_HEADGEAR_BOTTOM(state, viewID) {
