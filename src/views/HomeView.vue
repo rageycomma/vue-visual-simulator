@@ -451,25 +451,25 @@ export default {
   watch: {
     "$store.state.headgear_top_item.id": {
       deep: true,
-      handler(newValue, oldValue) {
+      handler(newValue) {
         this.item_top_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },
     "$store.state.headgear_mid_item.id": {
       deep: true,
-      handler(newValue, oldValue) {
+      handler(newValue) {
         this.item_mid_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },
     "$store.state.headgear_bottom_item.id": {
       deep: true,
-      handler(newValue, oldValue) {
+      handler(newValue) {
         this.item_bot_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },
     "$store.state.garment_item.id": {
       deep: true,
-      handler(newValue, oldValue) {
+      handler(newValue) {
         this.item_garmet_src = `https://static.divine-pride.net/images/items/item/${newValue}.png`;
       },
     },

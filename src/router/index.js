@@ -5,7 +5,10 @@ import environment from '@/env';
 const routes = [{
         path: '/',
         name: 'home',
-        component: HomeView
+        component: HomeView,
+        props: {
+            appName: environment.app_name
+        }
     },
     {
         path: '/about',
