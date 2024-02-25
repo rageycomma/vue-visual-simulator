@@ -285,7 +285,6 @@ import ClearCharacterButton from "@/components/character/ClearCharacterButton.vu
 import OutfitCheckbox from "@/components/character/OutfitCheckbox.vue";
 import RegularMountCheckbox from "@/components/character/RegularMountCheckbox.vue";
 import CashMountCheckbox from "@/components/character/CashMountCheckbox.vue";
-import { Tooltip } from "bootstrap";
 
 export default {
   data() {
@@ -322,7 +321,6 @@ export default {
   mounted() {
     document.title = "Ragnarok Online Visual Simulator";
     this.loadLocalStorage();
-    this.activeTooltip();
     this.updatePanelUrls();
 
     document.addEventListener("keydown", (event) => {
@@ -426,14 +424,6 @@ export default {
   },
   methods: {
     ...mapMutations(["SAVE_CHARACTER", "RESET_CHARACTER"]),
-    activeTooltip: function () {
-      let tooltipTriggerList = [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="tooltip"]')
-      );
-      let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new Tooltip(tooltipTriggerEl);
-      });
-    },
     loadLocalStorage: function () {
       let character = localStorage.getItem("character");
 

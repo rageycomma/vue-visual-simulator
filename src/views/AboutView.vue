@@ -1,80 +1,45 @@
+
 <template>
-  <div class="about">
-    <div class="container container-about my-5">
-      <div class="row p-5">
-        <div class="col-md-12">
-          <h1 class="text-center header-section">{{ $t("aboutProject") }}</h1>
-          <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6"><hr /></div>
-            <div class="col-md-3"></div>
-          </div>
-          <p class="py-5">{{ $t("aboutText") }}</p>
+  <div class="about p-5 d-flex flex-column">
+
+    <div class="container d-flex flex-column">
+      <div class="card">
+        <div class="card-body d-flex flex-column">
+          <h1 class="text-center header-section">{{ $t("aboutROPP") }}</h1>
+          <img src="Logo.png" class="flex-shrink-2" />
+          <p class="py-5">{{ $t("aboutROPPText") }}</p>
+          <a href="http://www.ragnarok.wiki/" class="btn btn-primary">Go to Ragnarok Wiki</a>
         </div>
       </div>
-      <div class="row p-5">
-        <div class="col-md-12">
+    </div>
+
+    <div class="container container-about my-5 d-flex flex-column">
+      <div class="p-5">
+        <h1 class="text-center header-section">{{ $t("aboutProject") }}</h1>
+        <p class="py-5">{{ $t("aboutText") }}</p>
+      </div>
+
+      <div class="p-5">
           <h1 class="text-center header-section">{{ $t("warning") }}</h1>
-          <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6"><hr /></div>
-            <div class="col-md-3"></div>
-          </div>
-          {{ $t("warningText") }}
-        </div>
+          <p>{{ $t("warningText") }}</p>
       </div>
-      <div class="row p-5">
-        <div class="col-md-12">
-          <h1 class="text-center header-section">{{ $t("team") }}</h1>
-          <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6"><hr /></div>
-            <div class="col-md-3"></div>
-          </div>
-          <div class="card col-md-12">
-            <div class="card-body">
-              <a
-                href="https://github.com/rageycomma/vue-visual-simulator/graphs/contributors"
-              >
-                <img
-                v-lazy="{ src: 'https://contrib.rocks/image?repo=rageycomma/vue-visual-simulator', delay: 250 }"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row p-5">
-        <div class="col-md-12">
-          <h1 class="text-center header-section">{{ $t("socialMedia") }}</h1>
-          <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6"><hr /></div>
-            <div class="col-md-3"></div>
-          </div>
-          <div class="row p-5 text-center">
-            <div class="col-md-12">
-              <h2>
-                <a
-                  href="https://github.com/rageycomma/vue-visual-simulator"
-                  target="_blank"
-                  ><i class="fa-brands fa-github"></i
-                ></a>
-              </h2>
-            </div>            
-          </div>
-        </div>
+      <div class="p-5">
+        <h1 class="text-center header-section">{{ $t("team") }}</h1>
+        <a href="https://github.com/rageycomma/vue-visual-simulator/graphs/contributors">
+          <img v-lazy="{ src: 'https://contrib.rocks/image?repo=rageycomma/vue-visual-simulator', delay: 250 }" />
+        </a>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  mounted() {
-    document.title = `${process.env.VUE_APP_LOGO_URL} About`;
-  },
-};
+<script setup>
+import { onMounted } from 'vue';
+const props = defineProps(['appName']);
+
+onMounted(() => {
+  document.title = `${props.appName} About`
+});
 </script>
 
 <style scoped>

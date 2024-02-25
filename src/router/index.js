@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView'
+import environment from '@/env';
 
 const routes = [{
         path: '/',
@@ -10,7 +11,10 @@ const routes = [{
         path: '/about',
         name: 'about',
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/AboutView.vue')
+            import ( /* webpackChunkName: "about" */ '../views/AboutView.vue'),
+        props: {
+            appName: environment.app_name
+        }
     }
 ]
 

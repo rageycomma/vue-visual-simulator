@@ -8,7 +8,7 @@
                     <use xlink:href="#bootstrap" />
                 </svg>
             </a>
-            <span>&copy; {{ projectName }} 2022</span>
+            <span>&copy; {{ projectName }} 2022-2024</span>
         </div>
 
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
@@ -22,12 +22,12 @@
     </footer>
 </template>
 
-<script>
-export default {
-    name: 'Footer',
-    props: ["projectName", "projectGit", "authorGit"],
+<script setup>
+const props = defineProps([
+    "projectName", "projectGit", "authorGit"
+]);
 
-}
+const name = 'Footer';
 </script>
 
 <style scoped>
