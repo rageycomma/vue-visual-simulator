@@ -1,6 +1,6 @@
 <template>
   <ul class="ul-item-list">
-    <li v-for="(item, index) in items" v-show="item.name.toLowerCase().includes(item_filter.toLowerCase())"
+    <li v-for="(item, index) in getJsonItems" v-show="item.name.toLowerCase().includes(item_filter.toLowerCase())"
       class="li-item" :key="item.id">
       <img v-lazy="{
         src: 'https://static.divine-pride.net/images/items/item/' +
