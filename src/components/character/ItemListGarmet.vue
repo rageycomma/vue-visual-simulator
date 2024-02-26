@@ -7,7 +7,7 @@
           item.id +
           '.png', delay: 250}
         "
-        class="img-item"
+        class="img-item list-head-garment-item"
         :class="{
           'item-selected': parseInt(item.id) == $store.state.garment_item.id,
           'item-disabled': parseInt(item.viewID) == 0,
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { Tooltip } from 'bootstrap';
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
@@ -34,14 +35,14 @@ export default {
   },
   data() {
     return {
-      items: [],
       active: false,
     };
   },
-  mounted: function () {
-    this.items = this.getJsonItems?.filter(function (item) {
-        return item.bot == true;
-    })
+  mounted() {
+    this.updateTooltips();
+  },
+  updated() {
+    this.updateTooltips();
   },
   watch: {
     "$store.ui.jsonFile": {
@@ -62,6 +63,11 @@ export default {
       "SAVE_HEADGEAR_BOTTOM",
       "SAVE_HEADGEAR_BOTTOM_ITEM",
     ]),
+    updateTooltips: function() {
+      Array.from(document.querySelectorAll('img.list-head-garment-item')).map(function (tooltipTriggerEl) {
+          return new Tooltip(tooltipTriggerEl);
+      });
+    },
     clickItem: function (event) {
       this.SAVE_GARMENT(parseInt(event.target.getAttribute("viewID")));
       this.validGarment();

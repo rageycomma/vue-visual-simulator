@@ -1,13 +1,13 @@
 <template>
   <ul class="ul-item-list">
-    <li v-for="(item, index) in items" v-show="item.name.toLowerCase().includes(item_filter.toLowerCase())"
+    <li v-for="(item, index) in getJsonItems" v-show="item.name.toLowerCase().includes(item_filter.toLowerCase())"
       class="li-item" :key="item.id">
       <img v-lazy="{
         src: 'https://static.divine-pride.net/images/items/item/' +
           item.id +
           '.png', delay: 250 }
         "
-        class="img-item"
+        class="img-item list-head-top-item"
         :class="{
           'item-selected': parseInt(item.id) == $store.state.headgear_top_item.id,
           'item-disabled': parseInt(item.viewID) == 0,
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { Tooltip } from 'bootstrap';
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
@@ -34,14 +35,14 @@ export default {
   },
   data() {
     return {
-      items: [],
       active: false,
     };
   },
-  mounted: function () {
-    this.items = this.getJsonItems?.filter(function (item) {
-        return item.top == true;
-    });
+  mounted() {
+    this.updateTooltips();
+  },
+  updated() {
+    this.updateTooltips();
   },
   methods: {
     ...mapMutations([
@@ -54,6 +55,11 @@ export default {
       "SAVE_GARMENT",
       "SAVE_GARMENT_ITEM",
     ]),
+    updateTooltips() {
+      Array.from(document.querySelectorAll('img.list-head-top-item')).map(function (tooltipTriggerEl) {
+          return new Tooltip(tooltipTriggerEl);
+      });
+    },
     clickItem: function (event) {
       this.SAVE_HEADGEAR_TOP(parseInt(event.target.getAttribute("viewID")));
       this.validTop();

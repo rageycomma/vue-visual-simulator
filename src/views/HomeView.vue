@@ -270,8 +270,6 @@
 <script>
 import environment from "@/env";
 import { mapMutations } from "vuex";
-import itemsEnglish from "@/db/itemsEn";
-import itemsPortuguese from "@/db/itemsPt";
 import GenderList from "@/components/character/GenderList.vue";
 import HairColorList from "@/components/character/HairColorList.vue";
 import HeadList from "@/components/character/HeadList.vue";
@@ -325,7 +323,6 @@ export default {
   mounted() {
     document.title = environment.app_name;
     this.loadLocalStorage();
-    this.activeTooltip();
     this.updatePanelUrls();
 
     document.addEventListener("keydown", (event) => {
@@ -429,13 +426,6 @@ export default {
   },
   methods: {
     ...mapMutations(["SAVE_CHARACTER", "RESET_CHARACTER"]),
-    activeTooltip: function () {
-      return [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="tooltip"]')
-      ).map(function (tooltipTriggerEl) {
-        return new Tooltip(tooltipTriggerEl);
-      });
-    },
     loadLocalStorage: function () {
       let character = localStorage.getItem("character");
 
