@@ -44,14 +44,6 @@ export default {
   updated() {
     this.updateTooltips();
   },
-  watch: {
-    "$store.ui.jsonFile": {
-      deep: true,
-      handler(newValue) {
-        this.jsonItems = newValue;
-      }
-    }
-  },
   methods: {
     ...mapMutations([
       "SAVE_GARMENT",
@@ -71,6 +63,7 @@ export default {
     clickItem: function (event) {
       this.SAVE_GARMENT(parseInt(event.target.getAttribute("viewID")));
       this.validGarment();
+      this.updateTooltips();
     },
     validGarment: function () {
       const item_fortmat = JSON.parse(event.target.getAttribute("item"));
