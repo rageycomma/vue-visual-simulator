@@ -1,6 +1,11 @@
 <template>
   <div class="container-character">
     <div class="container">
+      <div class="alert alert-info" role="alert">
+        ❤️<b>Hi!</b> Thanks for your patience and support of our project, Ragnarok Fans! (p.s. ty Bunny ❤️) ❤️
+      </div>
+    </div>
+    <div class="container">
       <div class="row">
         <div
           class="col-md-12 bg-gradient-ragnarok bg-gradient-ragnarok-border my-5"
@@ -16,6 +21,7 @@
                 </div>
               </div>
             </div>
+
             <div class="row g-0">
               <div class="col-md-6 p-3">
                 <div class="col-md-12">
